@@ -1,0 +1,89 @@
+﻿<Application x:Class="KinectWPFOpenCV.App"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <Color x:Key="NormalBrandColor">#52318F</Color>
+        <Color x:Key="HoverBrandColor">#322350</Color>
+        <Color x:Key="SecondaryBrandColor">#00BCF2</Color>
+
+        <Color x:Key="LightNeutralColor">#D2D2D2</Color>
+        <Color x:Key="MediumNeutralColor">#969696</Color>
+        <Color x:Key="DarkNeutralColor">#505050</Color>
+
+        <Color x:Key="HeaderForeground">White</Color>
+        <Color x:Key="LabelForeground">White</Color>
+
+        <Color x:Key="TitleForeground">#6e6e6e</Color>
+
+
+        <SolidColorBrush x:Key="NormalBrandBrush" Color="#52318F"/>
+        <SolidColorBrush x:Key="HoverBrandBrush" Color="#322350"/>
+        <SolidColorBrush x:Key="SecondaryBrandBrush" Color="#00BCF2"/>
+
+        <SolidColorBrush x:Key="LightNeutralBrush" Color="#D2D2D2"/>
+        <SolidColorBrush x:Key="MediumNeutralBrush" Color="#969696"/>
+        <SolidColorBrush x:Key="DarkNeutralBrush" Color="#505050"/>
+
+        <SolidColorBrush x:Key="HeaderForegroundBrush" Color="White"/>
+        <SolidColorBrush x:Key="LabelForegroundBrush" Color="White"/>
+        <SolidColorBrush x:Key="TitleForegroundBrush" Color="#6e6e6e"/>
+
+        <FontFamily x:Key="SegoeSymbol">Segoe UI Symbol</FontFamily>
+        <FontFamily x:Key="KinectFont">Segoe UI</FontFamily>
+        <FontFamily x:Key="KinectFontLight">Segoe UI Light</FontFamily>
+        <sys:Double x:Key="TitleFontSize">18.0</sys:Double>
+        <sys:Double x:Key="HeaderFontSize">32.0</sys:Double>
+        <sys:Double x:Key="FPSFontSize">14.0</sys:Double>
+        <sys:Double x:Key="LabelFontSize">18.0</sys:Double>
+        <sys:Double x:Key="ItemFontSize">12.0</sys:Double>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="#333" />
+        </Style>
+        <Style x:Key="SimpleButton" TargetType="ButtonBase"> 
+            <Setter Property="Padding" Value="12,4"/>
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ButtonBase">
+                        <Grid x:Name="Root">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="0:0:0.1"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.05" Storyboard.TargetName="content" Storyboard.TargetProperty="(FrameworkElement.Opacity)" To="1"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.0" Storyboard.TargetName="content" Storyboard.TargetProperty="(FrameworkElement.Opacity)" To=".6"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>                            
+                            
+                            <ContentPresenter x:Name="content" Opacity=".6" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+    
+</Application>

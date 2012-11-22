@@ -1,0 +1,71 @@
+﻿<Window x:Class="KinectWPFOpenCV.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Width="850" Height="575" WindowStyle="None" AllowsTransparency="True">
+    <Border BorderBrush="#00bcf2" BorderThickness="1" >
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+           
+            
+            <Button Style="{StaticResource SimpleButton}"  Grid.ColumnSpan="2" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Top" Margin="0 10 " Click="CloseBtnClick" >
+                <TextBlock Text="" FontFamily="{StaticResource SegoeSymbol}" FontSize="12" Foreground="#999"/>
+            </Button>
+
+            <Image Source="Images\Status.png" Stretch="None" HorizontalAlignment="Left"  Grid.Column="1"/>
+            <TextBlock x:Name="title" Text="Kinect + OpenCV " HorizontalAlignment="Left" Margin="65,26,0,26" VerticalAlignment="Center" FontFamily="{StaticResource KinectFontLight}" Foreground="{StaticResource TitleForegroundBrush}" FontSize="{StaticResource HeaderFontSize}" Grid.Column="1"  />
+            <Rectangle Fill="#666" Grid.Row="1" Margin="15 0 10 15" Grid.ColumnSpan="2" />
+            <TextBlock x:Name="txtError" Grid.Row="1" Text="No Kinect Found" Visibility="Collapsed" FontFamily="{StaticResource KinectFontLight}" Foreground="#ccc" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+            <Viewbox Margin="15 0 10 15" Grid.Row="1" Stretch="Uniform" x:Name="outputViewbox"  Grid.ColumnSpan="2" >            
+                      <Image Name="outImg" Width="640" Height="480" RenderTransformOrigin="0.5,0.5" />                                                                                  
+            </Viewbox>
+            
+            <Image Name="colorImg" Width="160" Height="120" Grid.Row="1" Grid.ColumnSpan="2" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" Margin="0 2 12 0" HorizontalAlignment="Right" VerticalAlignment="Top" />
+            
+            <StackPanel  Margin="0 0 15 15" Width="300" Background="#f0f0f0" HorizontalAlignment="Right" Grid.Column="2" Grid.Row="1" >
+                <TextBlock Text="Settings"  Padding="10" Background="#ccc" />
+                <TextBlock Text="Min Distance" Padding="10"/>
+                <StackPanel  Orientation="Horizontal">
+                    <Slider Width="250"  Minimum="300" Value="600"  Maximum="900" TickFrequency="1" IsSnapToTickEnabled="True" Interval="1" Margin="5"  x:Name="sliderMin" Padding="10"/>
+                    <TextBlock Text="{Binding Value, ElementName=sliderMin}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <TextBlock Text="Max Distance" Padding="10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Slider Width="250" Minimum="900" Value="900" Maximum="6000" Margin="5" x:Name="sliderMax" Padding="10"/>
+                    <TextBlock Text="{Binding Value, ElementName=sliderMax}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <TextBlock Text="Min Blob Size" Padding="10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Slider Width="250" Minimum="1" Value="10" Maximum="50" Margin="5" x:Name="sliderMinSize"  TickFrequency="1" IsSnapToTickEnabled="True" Interval="1" Padding="10"/>
+                    <TextBlock Text="{Binding Value, ElementName=sliderMinSize}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <TextBlock Text="Max Blob Size" Padding="10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Slider Width="250" Minimum="1" Value="110" Maximum="500" Margin="5" x:Name="sliderMaxSize"  TickFrequency="1" IsSnapToTickEnabled="True" Interval="1" Padding="10"/>
+                    <TextBlock Text="{Binding Value, ElementName=sliderMaxSize}" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <TextBlock Background="#ccc" Text="Info" Margin="0,20,0,0" Padding="10"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <TextBlock Text="Blobs Detected" Margin="10 0 0 0" />
+                    <TextBlock TextWrapping="Wrap" x:Name="txtBlobCount" Text="0" Margin="10 0 0 0" />
+                </StackPanel>
+                <TextBlock TextWrapping="Wrap" x:Name="txtInfo" Text="" Padding="10"/>
+
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>
